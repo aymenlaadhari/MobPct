@@ -189,7 +189,7 @@ public class Dictionnaire extends Activity implements
 		listView.setAdapter(adapter);
 
 		JsonObjectRequest jsonObjReq = new JsonObjectRequest(Method.GET, uri,
-				null, new Response.Listener<JSONObject>() {
+				new Response.Listener<JSONObject>() {
 
 					@Override
 					public void onResponse(JSONObject response) {
@@ -202,18 +202,6 @@ public class Dictionnaire extends Activity implements
 										.get(i);
 								JSONObject feedObj = feedObjGlob
 										.getJSONObject("phrase");
-
-//								if (feedObjGlob.has("meanings")) {
-//
-//									JSONArray arrayMeanings = feedObjGlob
-//											.getJSONArray("meanings");
-//									for (int j = 0; j < arrayMeanings.length(); j++) {
-//
-//										JSONObject meaning = arrayMeanings
-//												.getJSONObject(j);
-//										liste.add(meaning.getString("text"));
-//									}
-//								}
 
 								item = new Tuc();
 								item.setPhrase(feedObj.getString("text"));
@@ -230,9 +218,6 @@ public class Dictionnaire extends Activity implements
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-
-						// Toast.makeText(getApplicationContext(),
-						// response.toString(), Toast.LENGTH_LONG).show();
 
 						adapter.notifyDataSetChanged();
 

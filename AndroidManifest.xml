@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mobpactgertungit"
+    package="com.example.mobpactgertun"
     android:versionCode="1"
     android:versionName="1.0" >
- <uses-sdk
+
+    <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="17" />
 
@@ -30,22 +31,16 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyC0KoHKgw-ppj-hdqNZvhHdbmBHRvZc6fA" />
+            android:value="AIzaSyCXuK-1zY7YJR-Dm6zvrY_VXxLwwO8jegc" />
 
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
-            <intent-filter>
+                         <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".CollectionDemoActivity"
-            android:label="@string/title_activity_collection_demo" >
-        </activity>
-        <activity android:name=".goethe.AlltagActivity" >
         </activity>
         <activity android:name=".goethe.Dictionnaire" >
             <meta-data
@@ -53,20 +48,24 @@
                 android:value="com.mobPactGerTun.MainActivity" />
         </activity>
         <activity
-            android:name=".goethe.Dictionnairennaire"
-            android:label="@string/title_activity_dictionnaire" >
-        </activity>
-        <activity
-            android:name=".goethe.VideoBeruf"
+            android:name=".goethe.VideoIntro"
             android:label="@string/title_activity_video" >
-        </activity>
-        <activity
-            android:name=".goethe.VideoAlltagAlltag"
-            android:label="@string/title_activity_video_alltag" >
         </activity>
         <activity
             android:name=".LocationActivity"
             android:label="@string/title_activity_location" >
+        </activity>
+        <activity android:name=".LoginActivity" >
+           
+        </activity>
+        <activity
+            android:name=".feeds.NewPostActivity"
+            android:label="@string/title_activity_new_post" >
+        </activity>
+        <activity
+            android:name=".TestWS"
+            android:label="@string/title_activity_test_ws" >
+
         </activity>
     </application>
 

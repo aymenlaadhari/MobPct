@@ -2,7 +2,6 @@ package adapter;
 
 import java.util.List;
 
-import model.FeedImageView;
 import model.FeedItem;
 
 import android.app.Activity;
@@ -19,6 +18,7 @@ import app.AppController;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.example.mobpactgertun.FeedImageView;
 import com.example.mobpactgertun.R;
 
 

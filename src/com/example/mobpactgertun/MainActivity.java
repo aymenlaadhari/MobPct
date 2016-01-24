@@ -2,23 +2,17 @@ package com.example.mobpactgertun;
 
 import java.util.ArrayList;
 
-import com.example.mobpactgertun.communities.CommunityFragment;
-import com.example.mobpactgertun.goethe.GoetheFragment;
-
 import model.NavDrawerItem;
-
 import util.ConnectionDetector;
 import adapter.NavDrawerListAdapter;
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -29,9 +23,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.mobpactgertun.communities.CommunityFragment;
+import com.example.mobpactgertun.feeds.WhatsHotFragment;
+import com.example.mobpactgertun.goethe.GoetheFragment;
+import com.example.mobpactgertun.meetup.MeetupFragment;
 
 
-public class MainActivity extends Activity {
+
+public class MainActivity extends FragmentActivity {
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -58,20 +57,16 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 			
-		getActionBar().setBackgroundDrawable(
-				new ColorDrawable(Color.parseColor("#ffffff")));
+//		getActionBar().setBackgroundDrawable(
+//				new ColorDrawable(Color.parseColor("#ffffff")));
 
 		setContentView(R.layout.activity_main);
 		// creating connection detector class instance
         cd = new ConnectionDetector(getApplicationContext());
         isInternetPresent = cd.isConnectingToInternet();
         // check for Internet status
-        if (isInternetPresent) {
-            // Internet Connection is Present
-            // make HTTP requests
-            showAlertDialog(MainActivity.this, "Internet Connection",
-                    "You have internet connection", true);
-        } else {
+        if (!isInternetPresent) {
+          
             // Internet connection is not present
             // Ask user to connect to Internet
             showAlertDialog(MainActivity.this, "No Internet Connection",
@@ -170,7 +165,7 @@ public class MainActivity extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.menu_map, menu);
 		return true;
 	}
 
@@ -231,7 +226,7 @@ public class MainActivity extends Activity {
 		}
 
 		if (fragment != null) {
-			FragmentManager fragmentManager = getFragmentManager();
+			FragmentManager fragmentManager = getSupportFragmentManager();
 			fragmentManager.beginTransaction()
 					.replace(R.id.frame_container, fragment).commit();
 
@@ -278,7 +273,8 @@ public class MainActivity extends Activity {
      * @param message - alert message
      * @param status - success/failure (used to set icon)
      * */
-    public void showAlertDialog(Context context, String title, String message, Boolean status) {
+    @SuppressWarnings("deprecation")
+	public void showAlertDialog(Context context, String title, String message, Boolean status) {
         AlertDialog alertDialog = new AlertDialog.Builder(context).create();
  
         // Setting Dialog Title

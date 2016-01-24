@@ -57,5 +57,8 @@
     <string name="btn_start_location_updates">START LOCATION UPDATES</string>
     <string name="btn_stop_location_updates">STOP LOCATION UPDATES</string>
     <string name="title_activity_location">LocationActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_new_post">NewPostActivity</string>
+    <string name="title_activity_test_ws">TestWS</string>
 
 </resources>

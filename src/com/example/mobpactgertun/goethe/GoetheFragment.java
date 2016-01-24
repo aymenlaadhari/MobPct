@@ -2,16 +2,9 @@ package com.example.mobpactgertun.goethe;
 
 import java.util.ArrayList;
 
-import com.example.mobpactgertun.R;
-
 import adapter.GridviewAdapter;
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ValueAnimator;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.content.Intent;
-import android.graphics.Matrix;
-import android.graphics.RectF;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,25 +12,16 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
-import android.widget.ImageView;
+
+import com.example.mobpactgertun.R;
 
 
 
 public class GoetheFragment extends Fragment {
-	private static final int RightToLeft = 1;
-	private static final int LeftToRight = 2;
-	private static final int DURATION = 5000;
 
-	private ValueAnimator mCurrentAnimator;
-	private final Matrix mMatrix = new Matrix();
-	private ImageView mImageView;
-	private float mScaleFactor;
-	private int mDirection = RightToLeft;
-	private RectF mDisplayRect = new RectF();
 	private GridviewAdapter mAdapter;
 	private ArrayList<String> listCountry;
 	private ArrayList<Integer> listFlag;
-
 	private GridView gridView;
 
 	public GoetheFragment() {
@@ -50,18 +34,7 @@ public class GoetheFragment extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_goethe, container,
 				false);
 
-		// mImageView = (ImageView) rootView.findViewById(R.id.imageView1);
-		//
-		// mImageView.post(new Runnable() {
-		// @Override
-		// public void run() {
-		// mScaleFactor = (float) mImageView.getHeight()
-		// / (float) mImageView.getDrawable().getIntrinsicHeight();
-		// mMatrix.postScale(mScaleFactor, mScaleFactor);
-		// mImageView.setImageMatrix(mMatrix);
-		// animate();
-		// }
-		// });
+		
 
 		prepareList();
 
@@ -81,17 +54,17 @@ public class GoetheFragment extends Fragment {
 				
 				 switch (position) {
 				case 0:
-					Intent intentVideoAlltag = new Intent(getActivity(),VideoBeruf.class);
+					Intent intentVideoAlltag = new Intent(getActivity(),VideoIntro.class);
 					intentVideoAlltag.putExtra("intent", "Alltag");
 					startActivity(intentVideoAlltag);					
 					break;
 					case 1:
-						Intent intentVideoBeruf = new Intent(getActivity(),VideoBeruf.class);
+						Intent intentVideoBeruf = new Intent(getActivity(),VideoIntro.class);
 						intentVideoBeruf.putExtra("intent", "Beruf");
 						startActivity(intentVideoBeruf);
 						break;
 					case 2 :
-						Intent intentVideoMagazine = new Intent(getActivity(),VideoBeruf.class);
+						Intent intentVideoMagazine = new Intent(getActivity(),VideoIntro.class);
 						intentVideoMagazine.putExtra("intent", "Magazine");
 						startActivity(intentVideoMagazine);
 						
@@ -128,52 +101,7 @@ public class GoetheFragment extends Fragment {
 
 	}
 
-	private void animate() {
-		updateDisplayRect();
-		if (mDirection == RightToLeft) {
-			animate(mDisplayRect.left, mDisplayRect.left
-					- (mDisplayRect.right - mImageView.getWidth()));
-		} else {
-			animate(mDisplayRect.left, 0.0f);
-		}
-	}
-
-	private void animate(float from, float to) {
-		mCurrentAnimator = ValueAnimator.ofFloat(from, to);
-		mCurrentAnimator
-				.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-					@Override
-					public void onAnimationUpdate(ValueAnimator animation) {
-						float value = (Float) animation.getAnimatedValue();
-
-						mMatrix.reset();
-						mMatrix.postScale(mScaleFactor, mScaleFactor);
-						mMatrix.postTranslate(value, 0);
-
-						mImageView.setImageMatrix(mMatrix);
-
-					}
-				});
-		mCurrentAnimator.setDuration(DURATION);
-		mCurrentAnimator.addListener(new AnimatorListenerAdapter() {
-			@Override
-			public void onAnimationEnd(Animator animation) {
-				if (mDirection == RightToLeft)
-					mDirection = LeftToRight;
-				else
-					mDirection = RightToLeft;
-
-				animate();
-			}
-		});
-		mCurrentAnimator.start();
-	}
-
-	private void updateDisplayRect() {
-		mDisplayRect.set(0, 0, mImageView.getDrawable().getIntrinsicWidth(),
-				mImageView.getDrawable().getIntrinsicHeight());
-		mMatrix.mapRect(mDisplayRect);
-	}
+	
 
 	
 
