@@ -1,6 +1,6 @@
 # MobPct
 
-This App was a part of a personal contribution in the High Skilled Mobility Pact for Engineer Training. As a social plateform for the participants.
+This App was a part of a personal contribution in the High Skilled Mobility Pact for Engineer Training. A social plateform for the participants.
 
 ![alt tag](https://github.com/aymenlaadhari/MobPct/blob/master/demo/1.png?raw=true)
 
